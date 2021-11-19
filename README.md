@@ -76,6 +76,7 @@ four
 ```
 #### 파일 내용 치환
 ```
+# four를 4로 
 $ sed 's/four/4/' test.txt
 on1
 two
