@@ -1,7 +1,7 @@
 # getopt
 * 셸의 쉬운 구문 분석을 위해 명령줄에서 옵션을 쉽게 분리하는데 사용함.
 ### 사용법
-`getopt [option] [argument]`
+`getopt [option string] [argument]`
 1) short 옵션은 `-o`로 사용.
   * 해당 옵션에 추가 인수가 필요하다면 `콜론(:)`을 추가해 사용.
   * `ex) "-o a:b:c"`: a, b 옵션은 추가 인수 필요.
@@ -48,6 +48,19 @@ done
 ![getopt](https://user-images.githubusercontent.com/68629440/142729343-1cc23eb1-0f17-4855-b276-5c5b856bf4e5.png)
 
 # getopts
+* 셸의 쉬운 구문 분석을 위해 명령줄에서 옵션을 쉽게 분리하는데 사용함.
+* getopt는 인수의 공백이나 쉘 메타 문자의 처리와 오류 메시지 출력을 비활성화하는 기능이 없었으나 getopts에서는 해당 문제들을 수정, 해결함.
+* 또한, GNU 스타일의 긴 옵션과 옵션에 대한 선택적 인수를 구문 분석하는 기능을 도입함.
+### 사용법
+`getopt [option string] [argument]`
+1) short 옵션은 `-`로 사용.
+ * 순서 상관 없음.
+   ```
+   ex) $ cmd -abc
+       $ cmd -c -ab
+   ```
+ * 옵션 argument를 바로 붙여서 사용 가능.\
+   `ex) $ cmd -aee -bcffff`
 
 
 # sed
