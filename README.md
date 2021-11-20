@@ -38,9 +38,9 @@ do
         shift
 done
 
-$ ./getopt.sh -a apple -b banana -c
+$ ./getopt.sh -a apple -b banana -c carret -d doraemong
 ```
-![getopt](https://user-images.githubusercontent.com/68629440/142729049-5299bcb5-3afc-47a4-819a-1c87240de4ec.png)
+![getopt](https://user-images.githubusercontent.com/68629440/142729134-b9e39da3-2834-4f69-b850-35757b21e056.png)
 
 # getopts
 
