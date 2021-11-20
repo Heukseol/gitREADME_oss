@@ -43,7 +43,7 @@ do
         shift
 done
 ```
-![getopt](https://user-images.githubusercontent.com/68629440/142729134-b9e39da3-2834-4f69-b850-35757b21e056.png)
+![getopt](https://user-images.githubusercontent.com/68629440/142729343-1cc23eb1-0f17-4855-b276-5c5b856bf4e5.png)
 
 # getopts
 
