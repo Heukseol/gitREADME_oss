@@ -76,7 +76,7 @@ four
 ```
 #### 파일 내용 치환
 ```shell script
-# four를 4로 
+# four를 4로 치환
 $ sed 's/four/4/' test_s.txt
 on1
 two
@@ -86,7 +86,7 @@ thr11
 # awk
 * 입력을 주어진 분리자(field seperator)로 분리하여 명령을 처리함.
 ### 사용법
-`awk [옵션] [
+` awk [패턴] {[액션]} <파일명> `
 |옵션|내용|
 |---|---|
 |-F|문자열을 분리할 기준이 되는 분리문자 입력|
@@ -109,10 +109,44 @@ thr11
 #### 합 구하기
 ```shell script
 $ cat test_a.txt
-a 1
-b 2
-c 3
-c 2
-b 3
+a 1 kim
+b 2 shin
+c 3 go
+c 4 baek
+b 5 yoo
 
-$ cat test_a.txt | 
+% $1 각 그룹의 합 구하기
+$ awk '{arr[$1] += $2} END {for (i in arr) {print i, arr[i]}}' test_a.txt
+a 1
+b 7
+c 7
+
+% $2의 모든 합 구하기
+$ awk '{sum += $2} END {print sum}' test_a.txt
+15
+```
+
+#### 문자열 출력
+```shell script
+% kim 문자가 들어간 문자열 출력
+$ awk '/kim/' test_a.txt
+a 1 kim
+```
+
+#### 문자열 추가
+```shell script
+% 성 앞에 소속 대학 문자열 출력
+$ awk '{print ($1 " " $2 " " "chosun univ. " $3)}' test_a.txt
+a 1 chosun univ. kim
+b 2 chosun univ. shin
+c 3 chosun univ. go
+c 4 chosun univ. baek
+b 5 chosun univ. yoo
+```
+
+#### 문자열 자르기
+```shell script
+% 함수 substr을 사용해 문자열 자르기
+$ echo "1234567890" | awk -F " " '{print substr($1, 4, 3)}'
+456
+```
