@@ -34,6 +34,11 @@ do
                         shift;;
                 -c)
                         echo "-c option";;
+                --)
+                        shift
+                        break;;
+                *)
+                        echo "$1 is not an option";;
         esac
         shift
 done
