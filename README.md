@@ -40,7 +40,7 @@ done
 
 $ ./getopt.sh -a apple -b banana -c
 ```
-![getopt](https://user-images.githubusercontent.com/68629440/142728993-7b8327d8-6f78-47a0-969f-825a1f3ba487.png)
+![getopt](https://user-images.githubusercontent.com/68629440/142729049-5299bcb5-3afc-47a4-819a-1c87240de4ec.png)
 
 # getopts
 
