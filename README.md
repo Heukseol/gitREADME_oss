@@ -1,5 +1,46 @@
 # getopt
+* 셸의 쉬운 구문 분석을 위해 명령줄에서 옵션을 쉽게 분리하는데 사용함.
+### 사용법
+1) short 옵션은 `-o`로 사용.
+  * 해당 옵션에 추가 인수가 필요하다면 `콜론(:)`을 추가해 사용.
+  * `ex) "-o a:b:c"`: a, b 옵션은 추가 인수 필요.
+2) long 옵션은 `-l`로 사용.
+  * short 옵션과 달리 long 옵션을 구분하려면 `콤마(,)`로 구분.
+  * 해당 옵션에 추가 인수가 필요하다면 `콜론(:)`을 추가해 사용.
+  * `ex) "-l apple, banana, carret:"`: carret 옵션은 추가 인수 필요.
+3) `"-n <이름>"` 옵션으로 getopt가 오류를 출력할 때 사용할 이름을 지정.
+4) 마지막에 `-- "$@"`를 삽입
+  * `"--"`는 뒤에 오는 인수를 해당 명령의 옵션으로 처리하지 말라는 키워드로 `"$@"` 값이 getopt의 옵션으로 소비되는것을 막기 위함.
+  * `"$@"`는 스크립트를 실행할 때 입력한 모든 인수가 담겨있고 파싱할 대상으로 지정.
 
+### 사용예제
+```shell script
+$ nano getopt.sh
+
+#!/bin/bash
+
+set -- $(getopt -o a:b:c -- "$@")
+
+while [ -n "$1" ]
+do
+        case "$1" in
+                -a)
+                        arg="$2"
+                        echo "-a option, with argument value $arg"
+                        shift;;
+                -b)
+                        arg="$2"
+                        echo "-b option, with argument value $arg"
+                        shift;;
+                -c)
+                        echo "-c option";;
+        esac
+        shift
+done
+
+$ ./getopt.sh -a apple -b banana -c
+```
+![getopt](https://user-images.githubusercontent.com/68629440/142728993-7b8327d8-6f78-47a0-969f-825a1f3ba487.png)
 
 # getopts
 
