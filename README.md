@@ -11,7 +11,7 @@
   * `ex) "-l apple, banana, carret:"`: carret 옵션은 추가 인수 필요.
 3) `"-n <이름>"` 옵션으로 getopt가 오류를 출력할 때 사용할 이름을 지정.
 4) 마지막에 `-- "$@"`를 삽입
-  * `"--"`는 뒤에 오는 인수를 해당 명령의 옵션으로 처리하지 말라는 키워드로 `"$@"` 값이 getopt의 옵션으로 소비되는것을 막기 위함.
+  * `--`는 뒤에 오는 인수를 해당 명령의 옵션으로 처리하지 말라는 키워드로 `"$@"` 값이 getopt의 옵션으로 소비되는것을 막기 위함.
   * `"$@"`는 스크립트를 실행할 때 입력한 모든 인수가 담겨있고 파싱할 대상으로 지정.
 
 ### 사용예제
@@ -53,7 +53,7 @@ done
 * 또한, GNU 스타일의 긴 옵션과 옵션에 대한 선택적 인수를 구문 분석하는 기능을 도입함.
 ### 사용법
 `getopt [option string] [argument]`
-1) short 옵션은 `-`로 사용.
+1) short 옵션은 `-`로 시작.
  * 순서 상관 없음.
    ```
    ex) $ cmd -abc
@@ -61,6 +61,27 @@ done
    ```
  * 옵션 argument를 바로 붙여서 사용 가능.\
    `ex) $ cmd -aee -bcffff`
+ * `--` 뒤에 오는 인수는 해당 명령의 옵션으로 처리않음.
+2) long 옵션은 '--'로 사용.
+
+### 사용예제
+---
+```shell script
+$ nano getopts.sh
+
+#!/bin/bash
+
+while getopts :abc: opt
+do
+        case "$opt" in
+                a) echo "-a option";;
+                b) echo "-b option";;
+                c) echo "-c option, with value $OPTARG";;
+                *) echo "Unknown option: $opt";;
+        esac
+done
+```
+![getopts](https://user-images.githubusercontent.com/68629440/142755819-84faa395-ff9b-474c-882e-dce903a26345.png)
 
 
 # sed
